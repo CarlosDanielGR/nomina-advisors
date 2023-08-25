@@ -6,3 +6,22 @@
 body {
   background-color: var(--bg-primary);
 }
+
+.menu-icon-item,
+.menu-opener {
+  font-size: 1.2rem !important;
+}
+
+.sidebar-header {
+  display: block !important;
+  height: 20px;
+}
+
+.dock {
+  height: 92vh !important;
+  padding: 15px 7px !important;
+  lib-sidebar-item-icon {
+    display: flex;
+    align-items: center;
+  }
+}

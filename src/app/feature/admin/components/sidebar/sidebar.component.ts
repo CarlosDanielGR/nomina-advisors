@@ -13,23 +13,10 @@ import {
 export class SidebarComponent implements OnInit {
   sidebarItems = [
     {
-      name: 'Welcome',
-      icon: 'las la-home',
-      routerLink: ['/welcome'],
+      name: 'Perfil',
+      icon: 'fa-solid fa-user',
+      routerLink: ['profile'],
       position: 'top',
-    },
-    {
-      name: 'About',
-      icon: 'las la-address-book',
-      routerLink: ['/about'],
-      position: 'top',
-    },
-    {
-      name: 'secanis.ch',
-      icon: 'las la-external-link-alt',
-      url: 'https://secanis.ch',
-      target: '_blank',
-      position: 'bottom',
     },
   ];
 
@@ -46,7 +33,6 @@ export class SidebarComponent implements OnInit {
     closeAfterClick: true,
     mobile: false,
     position: 'sticky',
-    mobileTitle: 'I am a mobile title',
   };
 
   constructor(private ngSimpleSidebarService: NgSimpleSidebarService) {
