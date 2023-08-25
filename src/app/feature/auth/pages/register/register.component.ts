@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class RegisterComponent {
   formRegister!: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.formInit();
@@ -23,5 +27,6 @@ export class RegisterComponent {
 
   sendData(): void {
     console.log(this.formRegister.value);
+    this.router.navigate(['/admin']);
   }
 }

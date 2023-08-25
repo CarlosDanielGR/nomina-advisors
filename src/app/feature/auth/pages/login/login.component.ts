@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,10 @@ import { FormGroup } from '@angular/forms';
 export class LoginComponent {
   formLogin: FormGroup = new FormGroup({});
 
+  constructor(private readonly router: Router) {}
+
   sendData(): void {
-    console.log(this.formLogin);
+    console.log(this.formLogin.value);
+    this.router.navigate(['/admin']);
   }
 }
