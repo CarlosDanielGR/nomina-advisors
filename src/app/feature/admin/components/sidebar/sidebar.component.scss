@@ -1,0 +1,12 @@
+.content-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+}
