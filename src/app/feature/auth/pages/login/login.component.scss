@@ -1,0 +1,12 @@
+%flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login {
+  @extend %flexCol;
+  &__form {
+    @extend %flexCol;
+  }
+}

@@ -10,27 +10,8 @@
       />
       <label for="name">Nombre completo</label>
     </div>
-    <div class="form-floating">
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        placeholder="name@example.com"
-        formControlName="email"
-      />
-      <label for="email">Correo electrónico</label>
-    </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-      <label for="password">Contraseña</label>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="sendDataRegister()">
+    <app-common-form [formGroup]="formRegister"></app-common-form>
+    <button type="submit" class="btn btn-primary" (click)="sendData()">
       Registrar
     </button>
   </form>

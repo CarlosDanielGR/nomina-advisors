@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   formRegister!: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.formInit();
@@ -18,12 +22,11 @@ export class RegisterComponent implements OnInit {
   private formInit(): void {
     this.formRegister = this.formBuilder.group({
       name: [''],
-      email: [''],
-      password: [''],
     });
   }
 
-  sendDataRegister(): void {
+  sendData(): void {
     console.log(this.formRegister.value);
+    this.router.navigate(['/admin']);
   }
 }

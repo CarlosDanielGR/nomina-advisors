@@ -1,1 +1,14 @@
-<p>login works!</p>
+<article class="login">
+  <form class="login__form">
+    <app-common-form [formGroup]="formLogin"></app-common-form>
+    <button type="button" class="btn btn-primary" (click)="sendData()">
+      Iniciar sesión
+    </button>
+  </form>
+  <div>
+    <span>¿No tienes cuenta? </span>
+    <button type="button" class="btn btn-info" routerLink="/register">
+      Registrate
+    </button>
+  </div>
+</article>

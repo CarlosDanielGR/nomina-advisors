@@ -1,0 +1,22 @@
+<form class="common-form" [formGroup]="commonForm">
+  <div class="form-floating">
+    <input
+      type="email"
+      class="form-control"
+      id="{{ id }}-email"
+      placeholder="name@example.com"
+      formControlName="email"
+    />
+    <label for="{{ id }}-email">Correo electrónico</label>
+  </div>
+  <div class="form-floating">
+    <input
+      type="password"
+      class="form-control"
+      id="{{ id }}-password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <label for="{{ id }}-password">Contraseña</label>
+  </div>
+</form>
