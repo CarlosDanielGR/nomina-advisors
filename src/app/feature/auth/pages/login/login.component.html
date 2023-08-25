@@ -1,1 +1,6 @@
-<p>login works!</p>
+<article class="login">
+  <form class="login__form" (submit)="sendData()">
+    <app-common-form [formGroup]="formLogin"></app-common-form>
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+  </form>
+</article>
