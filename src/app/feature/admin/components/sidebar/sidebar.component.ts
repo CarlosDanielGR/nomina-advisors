@@ -18,6 +18,24 @@ export class SidebarComponent implements OnInit {
       routerLink: ['profile'],
       position: 'top',
     },
+    {
+      name: 'Comisiones',
+      icon: 'fa-solid fa-chart-line',
+      routerLink: ['commissions'],
+      position: 'top',
+    },
+    {
+      name: 'Ventas',
+      icon: 'fa-solid fa-money-check-dollar',
+      routerLink: ['sales'],
+      position: 'top',
+    },
+    {
+      name: 'Nomina',
+      icon: 'fa-solid fa-hand-holding-dollar',
+      routerLink: ['nomina'],
+      position: 'top',
+    },
   ];
 
   sidebarConfig: SimpleSidebarConfiguration = {

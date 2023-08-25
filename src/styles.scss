@@ -18,7 +18,8 @@ body {
 }
 
 .dock {
-  height: 92vh !important;
+  min-width: 35px !important;
+  height: 94vh !important;
   padding: 15px 7px !important;
   lib-sidebar-item-icon {
     display: flex;

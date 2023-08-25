@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CommissionsComponent } from './pages/commissions/commissions.component';
+import { SalesComponent } from './pages/sales/sales.component';
+import { NominaComponent } from './pages/nomina/nomina.component';
 
 const routes: Routes = [
   {
@@ -12,6 +15,18 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'commissions',
+        component: CommissionsComponent,
+      },
+      {
+        path: 'sales',
+        component: SalesComponent,
+      },
+      {
+        path: 'nomina',
+        component: NominaComponent,
       },
     ],
   },
