@@ -1,0 +1,43 @@
+<article class="register">
+  <form class="register__form" [formGroup]="formRegister">
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="name@example.com"
+        formControlName="name"
+      />
+      <label for="name">Nombre completo</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+        formControlName="email"
+      />
+      <label for="email">Correo electrónico</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <label for="password">Contraseña</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="sendDataRegister()">
+      Registrar
+    </button>
+  </form>
+  <div>
+    <span>¿Ya tienes cuenta? </span>
+    <button type="button" class="btn btn-info" routerLink="/login">
+      Iniciar sesión
+    </button>
+  </div>
+</article>
