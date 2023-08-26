@@ -38,6 +38,12 @@ figure {
   width: 170px !important;
 }
 
-.form-control:disabled {
-  background-color: #cdcdcd;
+.form-control {
+  &:disabled {
+    background-color: #cdcdcd;
+  }
+}
+.form-floating > .form-control:disabled ~ label::after,
+.form-floating > :disabled ~ label::after {
+  background-color: transparent;
 }
