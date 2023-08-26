@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
   readonly ASSETS_LOGO = environment.ASSETS_LOGO;
 
-  currentRoute: string = '';
+  currentRoute: string = 'Home';
 
   constructor() {}
 

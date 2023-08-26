@@ -9,6 +9,10 @@ body {
   background-color: var(--bg-primary);
 }
 
+figure {
+  margin: 0;
+}
+
 .menu-icon-item,
 .menu-opener {
   font-size: 1.2rem !important;
@@ -21,14 +25,10 @@ body {
 
 .dock {
   min-width: 35px !important;
-  height: 94vh !important;
+  height: 70vh !important;
   padding: 15px 7px !important;
   lib-sidebar-item-icon {
     display: flex;
     align-items: center;
   }
-}
-
-figure {
-  margin: 0;
 }
