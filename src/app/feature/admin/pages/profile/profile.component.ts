@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +7,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  formProfile!: FormGroup;
+  formProfile!: UntypedFormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.initFormProfile();

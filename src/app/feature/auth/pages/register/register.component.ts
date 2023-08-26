@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  formRegister!: FormGroup;
+  formRegister!: UntypedFormGroup;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly router: Router
   ) {}
 

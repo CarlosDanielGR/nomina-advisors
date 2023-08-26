@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-common-form',
@@ -7,13 +7,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./common-form.component.scss'],
 })
 export class CommonFormComponent implements OnInit {
-  @Input() formGroup!: FormGroup;
+  @Input() formGroup!: UntypedFormGroup;
 
   @Input() id: string = 'common';
 
-  commonForm!: FormGroup;
+  commonForm!: UntypedFormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.formInit();
