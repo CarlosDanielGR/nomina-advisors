@@ -1,0 +1,22 @@
+@use "src/styles/_mixins.scss" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 4px 7px #00000057;
+  &__logo {
+    > img {
+      max-width: 7rem;
+    }
+  }
+  &__route,
+  &__logout {
+    @include screen(custom, max, 768) {
+      display: none;
+    }
+  }
+}

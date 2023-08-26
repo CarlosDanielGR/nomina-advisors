@@ -1,0 +1,64 @@
+$breakpoint-small: 768px;
+$breakpoint-med-small: 992px;
+$breakpoint-med: 1200px;
+$breakpoint-large: 1400px;
+
+@mixin screen($size, $type: min, $pixels: $breakpoint-small) {
+  @if $size == 'small' {
+    @media screen and (#{$type}-width: $breakpoint-small) {
+      @content;
+    }
+  } @else if $size == 'med-small' {
+    @media screen and (#{$type}-width: $breakpoint-med-small) {
+      @content;
+    }
+  } @else if $size == 'med' {
+    @media screen and (#{$type}-width: $breakpoint-med) {
+      @content;
+    }
+  } @else if $size == 'large' {
+    @media screen and (#{$type}-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $size == 'custom' {
+    @media screen and (#{$type}-width: #{$pixels}px) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin ellipsis($width) {
+  max-width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin link {
+  color: var(--cl--black);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@mixin absoluteCenter($horizontal: 50%, $vertical: 50%) {
+  position: absolute;
+  top: $vertical;
+  left: $horizontal;
+  transform: translateX(-$horizontal);
+  transform: translateY(-$vertical);
+  @if $horizontal != null & $vertical != null {
+    transform: translate(-$horizontal, -$vertical);
+  }
+}
+
+@mixin specificity($depth: 1) {
+  $suffix: '';
+  @for $i from 0 to $depth {
+    $suffix: $suffix + ':nth-child(n)';
+  }
+  &#{$suffix} {
+    @content;
+  }
+}

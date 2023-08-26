@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@use "src/styles/_mixins.scss" as *;
+
 :root {
   --bg-primary: #e9ecef;
 }
 
 body {
   background-color: var(--bg-primary);
+}
+
+figure {
+  margin: 0;
 }
