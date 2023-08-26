@@ -12,3 +12,38 @@ body {
 figure {
   margin: 0;
 }
+
+.menu-icon-item,
+.menu-opener {
+  font-size: 1.2rem !important;
+}
+
+.sidebar-header {
+  display: block !important;
+  height: 20px;
+}
+
+.dock {
+  min-width: 35px !important;
+  height: 70vh !important;
+  padding: 15px 7px !important;
+  background-color: #fff !important;
+  lib-sidebar-item-icon {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dock-open {
+  width: 170px !important;
+}
+
+.form-control {
+  &:disabled {
+    background-color: #cdcdcd;
+  }
+}
+.form-floating > .form-control:disabled ~ label::after,
+.form-floating > :disabled ~ label::after {
+  background-color: transparent;
+}

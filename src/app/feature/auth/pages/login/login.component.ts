@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  formLogin: FormGroup = new FormGroup({});
+  formLogin: UntypedFormGroup = new UntypedFormGroup({});
 
   constructor(private readonly router: Router) {}
 

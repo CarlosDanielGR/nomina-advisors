@@ -1,0 +1,8 @@
+.commissions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  > button:first-child {
+    width: fit-content;
+  }
+}

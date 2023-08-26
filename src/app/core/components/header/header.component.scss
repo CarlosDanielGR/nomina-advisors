@@ -13,10 +13,15 @@
       max-width: 7rem;
     }
   }
-  &__route,
-  &__logout {
-    @include screen(custom, max, 768) {
+  &__route {
+    font-weight: 600;
+    @include screen(custom, max, 500) {
       display: none;
+    }
+  }
+  &__logout {
+    > i {
+      font-size: 1.4rem;
     }
   }
 }
