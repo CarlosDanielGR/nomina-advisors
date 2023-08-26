@@ -2,7 +2,7 @@
   <figure class="header__logo">
     <img src="{{ ASSETS_LOGO }}logo.webp" alt="Logo" />
   </figure>
-  <span class="header__route">
+  <span *ngIf="showRoute" class="header__route">
     {{ currentRoute }}
   </span>
   <button type="button" class="btn header__logout" title="Cerrar sesión">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,9 +11,25 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
   readonly ASSETS_LOGO = environment.ASSETS_LOGO;
 
-  currentRoute: string = 'Home';
+  showRoute: boolean = false;
 
-  constructor() {}
+  currentRoute: string = '';
 
-  ngOnInit(): void {}
+  constructor(private readonly router: Router) {}
+
+  ngOnInit(): void {
+    this.handleRoute();
+  }
+
+  private handleRoute(): void {
+    this.router.events.subscribe({
+      next: (route) => {
+        if (route instanceof NavigationEnd) {
+          const url = route.url;
+          this.showRoute = url.includes('admin');
+          this.currentRoute = url.split('/').at(-1) ?? '';
+        }
+      },
+    });
+  }
 }
