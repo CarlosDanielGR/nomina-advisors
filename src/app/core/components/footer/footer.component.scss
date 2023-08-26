@@ -1,0 +1,15 @@
+%flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer {
+  @extend %flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: #fff;
+  &__links {
+    @extend %flex;
+  }
+}
