@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit {
       darkModeBackground: '#333',
       darkModeFont: '#fff',
     },
-    closeAfterClick: true,
+    closeAfterClick: false,
     mobile: false,
     position: 'sticky',
   };
@@ -56,6 +56,7 @@ export class SidebarComponent implements OnInit {
   constructor(private ngSimpleSidebarService: NgSimpleSidebarService) {
     this.ngSimpleSidebarService.addItems(this.sidebarItems);
     this.ngSimpleSidebarService.configure(this.sidebarConfig);
+    this.ngSimpleSidebarService.open();
   }
 
   ngOnInit(): void {}
