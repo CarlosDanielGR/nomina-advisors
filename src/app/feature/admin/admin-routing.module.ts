@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ROUTES_ADMIN } from 'src/app/shared/constant/route.constant';
 import { AdminComponent } from './admin.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CommissionsComponent } from './pages/commissions/commissions.component';
@@ -13,19 +14,19 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'profile',
+        path: '',
         component: ProfileComponent,
       },
       {
-        path: 'commissions',
+        path: ROUTES_ADMIN.COMMISSIONS,
         component: CommissionsComponent,
       },
       {
-        path: 'sales',
+        path: ROUTES_ADMIN.SALES,
         component: SalesComponent,
       },
       {
-        path: 'nomina',
+        path: ROUTES_ADMIN.NOMINA,
         component: NominaComponent,
       },
     ],

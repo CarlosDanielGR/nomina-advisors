@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Perfil',
       icon: 'fa-solid fa-user',
-      routerLink: ['profile'],
+      routerLink: ['/admin'],
       position: 'top',
     },
     {
