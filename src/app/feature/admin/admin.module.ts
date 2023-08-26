@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgSimpleSidebarModule } from 'ng-simple-sidebar';
 
@@ -11,7 +12,14 @@ import { SalesComponent } from './pages/sales/sales.component';
 import { NominaComponent } from './pages/nomina/nomina.component';
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, ProfileComponent, CommissionsComponent, SalesComponent, NominaComponent],
-  imports: [NgSimpleSidebarModule, AdminRoutingModule],
+  declarations: [
+    AdminComponent,
+    SidebarComponent,
+    ProfileComponent,
+    CommissionsComponent,
+    SalesComponent,
+    NominaComponent,
+  ],
+  imports: [NgSimpleSidebarModule, AdminRoutingModule, ReactiveFormsModule],
 })
 export class AdminModule {}

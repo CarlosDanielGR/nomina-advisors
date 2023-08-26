@@ -27,6 +27,7 @@ figure {
   min-width: 35px !important;
   height: 70vh !important;
   padding: 15px 7px !important;
+  background-color: #fff !important;
   lib-sidebar-item-icon {
     display: flex;
     align-items: center;
@@ -35,4 +36,8 @@ figure {
 
 .dock-open {
   width: 170px !important;
+}
+
+.form-control:disabled {
+  background-color: #cdcdcd;
 }
