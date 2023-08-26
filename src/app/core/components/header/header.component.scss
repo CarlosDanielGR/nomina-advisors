@@ -14,6 +14,7 @@
     }
   }
   &__route {
+    font-weight: 600;
     @include screen(custom, max, 500) {
       display: none;
     }
