@@ -11,12 +11,12 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       {
-        path: 'register',
-        component: RegisterComponent,
+        path: '',
+        component: LoginComponent,
       },
       {
-        path: 'login',
-        component: LoginComponent,
+        path: 'register',
+        component: RegisterComponent,
       },
     ],
   },
