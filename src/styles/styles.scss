@@ -47,3 +47,33 @@ figure {
 .form-floating > :disabled ~ label::after {
   background-color: transparent;
 }
+
+input.ng-touched.ng-invalid.ng-touched:not(.form-check-input):not(
+    .errorPassword
+  ):not(.basicInfo .phoneNumber .form-control),
+select.ng-touched.ng-invalid.ng-touched:not(.form-check-input) {
+  border: 1.5px solid red;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  padding-right: calc(1.5em + 0.75rem);
+}
+/* Password */
+input.ng-touched.ng-invalid.ng-touched.errorPassword {
+  border: 1.5px solid red;
+}
+/* Checkbox */
+input.ng-touched.ng-invalid.ng-touched.form-check-input {
+  border: 1.5px solid red;
+}
+/* Input phone number profile */
+.basicInfo .phoneNumber .form-control.ng-touched.ng-invalid.ng-touched {
+  border: 1.5px solid red;
+}
+
+.alert {
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
+}

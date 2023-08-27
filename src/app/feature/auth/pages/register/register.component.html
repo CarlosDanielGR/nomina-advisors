@@ -25,7 +25,12 @@
       </select>
       <label for="experience">Nivel de experiencia</label>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="sendData()">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="formRegister.invalid"
+      (click)="sendData()"
+    >
       Registrar
     </button>
   </form>

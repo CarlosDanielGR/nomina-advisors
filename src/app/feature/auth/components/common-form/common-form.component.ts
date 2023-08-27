@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-common-form',
@@ -21,8 +25,8 @@ export class CommonFormComponent implements OnInit {
 
   private formInit(): void {
     this.commonForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
 
     Object.keys(this.commonForm.value).forEach((key) => {

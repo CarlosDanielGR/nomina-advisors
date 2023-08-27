@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { AuthService } from './services/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthComponent } from './auth.component';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -16,5 +17,6 @@ import { CommonFormComponent } from './components/common-form/common-form.compon
     CommonFormComponent,
   ],
   imports: [AuthRoutingModule, ReactiveFormsModule, SharedModule],
+  providers: [AuthService],
 })
 export class AuthModule {}
