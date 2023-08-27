@@ -17,4 +17,12 @@ export class AuthService {
   createUser(body: CreateUser): Observable<CreateUser> {
     return this.http.post<CreateUser>(`${this.API_URL}register`, body);
   }
+
+  get token(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  set newToken(token: string) {
+    localStorage.setItem('token', token);
+  }
 }

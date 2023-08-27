@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { adminGuard } from './core/guards/admin/admin.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +13,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./feature/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [adminGuard],
   },
 ];
 

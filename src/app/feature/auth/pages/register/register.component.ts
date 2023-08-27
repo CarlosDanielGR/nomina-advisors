@@ -41,7 +41,8 @@ export class RegisterComponent {
     const body = this.formRegister.value as CreateUser;
     body.experience = +body.experience;
     this.authService.createUser(body).subscribe({
-      next: () => {
+      next: (res: CreateUser) => {
+        this.authService.newToken = res.token as string;
         this.router.navigate(['/admin']);
       },
       error: (error: HttpErrorResponse) => {

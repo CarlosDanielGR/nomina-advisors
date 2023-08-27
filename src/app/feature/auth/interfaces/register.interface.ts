@@ -5,4 +5,5 @@ export interface CreateUser {
   email: string;
   password: string;
   experience: EXPERIENCE;
+  token?: string;
 }
