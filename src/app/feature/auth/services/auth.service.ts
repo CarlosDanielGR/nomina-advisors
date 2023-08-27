@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { CreateUser } from '../interfaces/register.interface';
+import { Login } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,12 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient) {}
 
-  createUser(body: CreateUser): Observable<CreateUser> {
-    return this.http.post<CreateUser>(`${this.API_URL}register`, body);
+  createUser(body: CreateUser): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.API_URL}register`, body);
+  }
+
+  loginUser(body: Login): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.API_URL}login`, body);
   }
 
   get token(): string | null {
