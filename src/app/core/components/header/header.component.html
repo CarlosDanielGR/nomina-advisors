@@ -6,7 +6,13 @@
     <span class="header__route">
       {{ routeNames[currentRoute] | uppercase }}
     </span>
-    <button type="button" class="btn header__logout" title="Cerrar sesión">
+    <button
+      type="button"
+      class="btn header__logout"
+      title="Cerrar sesión"
+      routerLink=""
+      (click)="logout()"
+    >
       <i class="fa-solid fa-right-from-bracket"></i>
     </button>
   </ng-container>
