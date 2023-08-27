@@ -46,11 +46,7 @@ export class RegisterComponent {
         this.router.navigate(['/admin']);
       },
       error: (error: HttpErrorResponse) => {
-        const { message } = error.error;
-        this.alerService.newAlert = {
-          type: 'danger',
-          message: typeof message === 'string' ? message : message[0],
-        };
+        this.alerService.alertError(error);
       },
     });
   }
