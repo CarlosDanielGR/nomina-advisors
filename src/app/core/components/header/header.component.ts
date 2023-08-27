@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
     [ROUTES_ADMIN.NOMINA]: 'Nomina',
   };
 
-  showRoute: boolean = false;
+  isAdmin: boolean = false;
+
+  isAuth: boolean = false;
 
   currentRoute: string = '';
 
@@ -34,7 +36,8 @@ export class HeaderComponent implements OnInit {
       next: (route) => {
         if (route instanceof NavigationEnd) {
           const url = route.url;
-          this.showRoute = url.includes('admin');
+          this.isAdmin = url.includes('admin');
+          this.isAuth = url === '/' || url === '/register';
           this.currentRoute = url.split('/').at(-1) ?? '';
         }
       },

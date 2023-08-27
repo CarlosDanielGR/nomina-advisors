@@ -1,6 +1,6 @@
 <div class="app">
-  <app-header></app-header>
-  <main class="app__main">
+  <app-header #header></app-header>
+  <main class="app__main" [class.app__main--auth]="header.isAuth">
     <router-outlet></router-outlet>
   </main>
   <app-footer></app-footer>
