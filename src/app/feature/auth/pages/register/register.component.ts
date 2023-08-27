@@ -22,6 +22,7 @@ export class RegisterComponent {
   private formInit(): void {
     this.formRegister = this.formBuilder.group({
       name: [''],
+      experience: [''],
     });
   }
 
