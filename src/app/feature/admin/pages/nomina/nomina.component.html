@@ -3,21 +3,19 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
           <th scope="col">Asesor</th>
-          <th scope="col">Comision</th>
-          <th scope="col">Ventas</th>
+          <th scope="col">Experiencia</th>
+          <th scope="col">Salario</th>
           <th scope="col">Total</th>
           <th scope="col">Imprimir</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr>
-          <td>25</td>
-          <td>Pepita Perez</td>
-          <td>500.000 COP</td>
-          <td>8000 COP</td>
-          <td>8.000.000 COP</td>
+        <tr *ngFor="let nomina of nominaData$ | async">
+          <td>{{ nomina.name }}</td>
+          <td>{{ nomina.experience }}</td>
+          <td>{{ nomina.nomina }}</td>
+          <td>{{ nomina.total }}</td>
           <td>
             <button type="button" class="btn btn-dark">Imprimir</button>
           </td>

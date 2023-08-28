@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../interfaces/profile.interface';
+import { Observable } from 'rxjs';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-nomina',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nomina.component.scss'],
 })
 export class NominaComponent implements OnInit {
-  constructor() {}
+  nominaData$: Observable<User[]> = new Observable();
 
-  ngOnInit(): void {}
+  constructor(private readonly adminService: AdminService) {}
+
+  ngOnInit(): void {
+    this.nominaData$ = this.adminService.getAllNomina();
+  }
 }
