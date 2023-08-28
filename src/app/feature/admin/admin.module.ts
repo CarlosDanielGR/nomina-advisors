@@ -12,6 +12,8 @@ import { CommissionsComponent } from './pages/commissions/commissions.component'
 import { SalesComponent } from './pages/sales/sales.component';
 import { NominaComponent } from './pages/nomina/nomina.component';
 import { ChangePasswordComponent } from './pages/profile/components/change-password/change-password.component';
+import { AdminService } from './services/admin.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ChangePasswordComponent } from './pages/profile/components/change-passw
     AdminRoutingModule,
     ReactiveFormsModule,
     NgbModalModule,
+    SharedModule,
   ],
+  providers: [AdminService],
 })
 export class AdminModule {}

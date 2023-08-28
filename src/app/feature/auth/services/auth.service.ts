@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
+import { TokenService } from 'src/app/shared/services/token.service';
 import { environment } from 'src/environments/environment';
 import { CreateUser } from '../interfaces/register.interface';
 import { Login } from '../interfaces/login.interface';
@@ -10,10 +11,12 @@ import { Login } from '../interfaces/login.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService extends TokenService {
   private readonly API_URL = `${environment.API_URL}auth/`;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+    super();
+  }
 
   createUser(body: CreateUser): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.API_URL}register`, body);
@@ -21,13 +24,5 @@ export class AuthService {
 
   loginUser(body: Login): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.API_URL}login`, body);
-  }
-
-  get token(): string | null {
-    return localStorage.getItem('token');
-  }
-
-  set newToken(token: string) {
-    localStorage.setItem('token', token);
   }
 }
