@@ -9,6 +9,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { AdminService } from '../../services/admin.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { User } from '../../interfaces/profile.interface';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initFormProfile();
-    this.setFormProfile();
+    this.getProfileData();
   }
 
   ngOnDestroy(): void {
@@ -45,15 +46,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  private setFormProfile(): void {
+  private setFormProfile(res: User): void {
+    this.formProfile.patchValue({
+      name: res.name,
+      email: res.email,
+      phone: res.phone,
+    });
+  }
+
+  private getProfileData(): void {
     const id = this.tokenService.token as string;
     this.subscription = this.adminService.getProfile({ id }).subscribe({
       next: (res) => {
-        this.formProfile.patchValue({
-          name: res.name,
-          email: res.email,
-          phone: res.phone,
-        });
+        this.setFormProfile(res);
       },
       error: (error: HttpErrorResponse) => {
         this.alerService.alertError(error);
@@ -66,6 +71,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
     const id = this.tokenService.token as string;
     this.adminService.updateProfile(id, body).subscribe({
       next: () => {},
+      error: (error: HttpErrorResponse) => {
+        this.alerService.alertError(error);
+      },
+    });
+  }
+
+  removeDataUser(): void {
+    const id = this.tokenService.token as string;
+    this.adminService.removeDataUser(id).subscribe({
+      next: (res) => {
+        this.setFormProfile(res);
+      },
       error: (error: HttpErrorResponse) => {
         this.alerService.alertError(error);
       },

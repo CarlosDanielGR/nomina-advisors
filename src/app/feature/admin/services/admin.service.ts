@@ -24,4 +24,8 @@ export class AdminService {
       },
     });
   }
+
+  removeDataUser(id: string): Observable<User> {
+    return this.http.delete<User>(`${this.API_URL}profile`, { params: { id } });
+  }
 }
