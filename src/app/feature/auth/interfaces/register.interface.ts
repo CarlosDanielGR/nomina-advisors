@@ -1,9 +1,10 @@
-import { EXPERIENCE } from '../constant/experience.constant';
+import { TYPE_ADVISER } from 'src/app/shared/constant/comission.constant';
 
 export interface CreateUser {
   name: string;
   email: string;
   password: string;
-  experience: EXPERIENCE;
+  experience: TYPE_ADVISER;
   token?: string;
+  nomina: number;
 }
