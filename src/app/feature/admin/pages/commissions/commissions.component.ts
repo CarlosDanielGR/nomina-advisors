@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Target } from '../../interfaces/commission.interface';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { TARGETS, TYPE_CRUP } from './constant/comission.constant';
+import { ManageCommissionComponent } from './components/manage-commission/manage-commission.component';
 
 @Component({
   selector: 'app-commissions',
@@ -8,22 +11,15 @@ import { Target } from '../../interfaces/commission.interface';
   styleUrls: ['./commissions.component.scss'],
 })
 export class CommissionsComponent implements OnInit {
-  targets: Target[] = [
-    {
-      type: 'Junior',
-      price: 5000000,
-    },
-    {
-      type: 'Senior',
-      price: 10000000,
-    },
-    {
-      type: 'Master',
-      price: 15000000,
-    },
-  ];
+  targets = TARGETS;
 
-  constructor() {}
+  typeCrup = TYPE_CRUP;
+
+  constructor(private readonly modalService: NgbModal) {}
 
   ngOnInit(): void {}
+
+  openManageComission(type: TYPE_CRUP): void {
+    this.modalService.open(ManageCommissionComponent, { centered: true });
+  }
 }

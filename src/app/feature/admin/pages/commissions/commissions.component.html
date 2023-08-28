@@ -1,8 +1,26 @@
 <article class="commissions">
   <div class="commissions__btnCrup">
-    <button type="button" class="btn btn-success">Crear comisión</button>
-    <button type="button" class="btn btn-warning">Editar comisión</button>
-    <button type="button" class="btn btn-danger">Eiliminar comisión</button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="openManageComission(typeCrup.create)"
+    >
+      Crear comisión
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="openManageComission(typeCrup.edit)"
+    >
+      Editar comisión
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="openManageComission(typeCrup.remove)"
+    >
+      Eiliminar comisión
+    </button>
   </div>
   <div class="table-responsive">
     <table class="table">
