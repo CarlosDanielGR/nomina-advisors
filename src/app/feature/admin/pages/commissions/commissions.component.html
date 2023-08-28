@@ -1,60 +1,23 @@
 <article class="commissions">
-  <button type="button" class="btn btn-success">Crear comisión</button>
+  <div class="commissions__btnCrup">
+    <button type="button" class="btn btn-success">Crear comisión</button>
+    <button type="button" class="btn btn-warning">Editar comisión</button>
+    <button type="button" class="btn btn-danger">Eiliminar comisión</button>
+  </div>
   <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col" colspan="2">Acciones</th>
+          <th scope="col">Tipo de asesor</th>
           <th scope="col">Meta</th>
-          <th scope="col">% Actual</th>
-          <th scope="col" title="Fecha de creación">Fecha</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr>
+        <tr *ngFor="let target of targets">
+          <td>{{ target.type }}</td>
           <td>
-            <button type="button" class="btn btn-warning">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
+            {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
           </td>
-          <td>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </td>
-          <td>3 Celular</td>
-          <td>20%</td>
-          <td>12/05/2023</td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" class="btn btn-warning">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-          </td>
-          <td>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </td>
-          <td>4 Computador</td>
-          <td>20%</td>
-          <td>12/05/2023</td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" class="btn btn-warning">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-          </td>
-          <td>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-solid fa-trash-can"></i>
-            </button>
-          </td>
-          <td>5 Televisor</td>
-          <td>20%</td>
-          <td>12/05/2023</td>
         </tr>
       </tbody>
     </table>

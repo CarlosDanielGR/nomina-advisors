@@ -14,6 +14,7 @@ import { NominaComponent } from './pages/nomina/nomina.component';
 import { ChangePasswordComponent } from './pages/profile/components/change-password/change-password.component';
 import { AdminService } from './services/admin.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ManageCommissionComponent } from './pages/commissions/components/manage-commission/manage-commission.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SalesComponent,
     NominaComponent,
     ChangePasswordComponent,
+    ManageCommissionComponent,
   ],
   imports: [
     NgSimpleSidebarModule,
