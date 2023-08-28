@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { AuthService } from '../../services/auth.service';
 import { CreateUser } from '../../interfaces/register.interface';
+import {
+  TARGETS,
+  TYPE_ADVISER,
+} from 'src/app/shared/constant/comission.constant';
 
 @Component({
   selector: 'app-register',
@@ -40,6 +44,9 @@ export class RegisterComponent {
   sendData(): void {
     const body = this.formRegister.value as CreateUser;
     body.experience = +body.experience;
+    body.nomina =
+      TARGETS.find((target) => TYPE_ADVISER[target.type] === body.experience)
+        ?.price || 0;
     this.authService.createUser(body).subscribe({
       next: (res) => {
         this.authService.newToken = res.token;

@@ -1,6 +1,6 @@
+<app-alert></app-alert>
+<app-header #header></app-header>
 <div class="app">
-  <app-alert></app-alert>
-  <app-header #header></app-header>
   <main class="app__main" [class.app__main--auth]="header.isAuth">
     <router-outlet></router-outlet>
   </main>

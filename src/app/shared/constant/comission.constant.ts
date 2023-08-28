@@ -1,4 +1,4 @@
-import { Target } from '../../../interfaces/commission.interface';
+import { Target } from '../interfaces/nomina.interface';
 
 export const TARGETS: Target[] = [
   {
@@ -14,6 +14,12 @@ export const TARGETS: Target[] = [
     price: 15000000,
   },
 ];
+
+export enum TYPE_ADVISER {
+  Junior = 1,
+  Senior,
+  Master,
+}
 
 export enum TYPE_CRUP {
   edit = 1,

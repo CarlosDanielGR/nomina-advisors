@@ -11,6 +11,8 @@ import { User } from '../interfaces/profile.interface';
 export class AdminService {
   private readonly API_URL = `${environment.API_URL}auth/`;
 
+  private readonly API_URL_ADMIN = `${environment.API_URL}admin/`;
+
   constructor(private readonly http: HttpClient) {}
 
   getProfile(params: { id: string }): Observable<User> {
@@ -27,5 +29,9 @@ export class AdminService {
 
   removeDataUser(id: string): Observable<User> {
     return this.http.delete<User>(`${this.API_URL}profile`, { params: { id } });
+  }
+
+  getAllNomina(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API_URL_ADMIN}nomina`);
   }
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { TARGETS, TYPE_CRUP } from './constant/comission.constant';
 import { ManageCommissionComponent } from './components/manage-commission/manage-commission.component';
+import { TARGETS, TYPE_CRUP } from 'src/app/shared/constant/comission.constant';
 
 @Component({
   selector: 'app-commissions',
