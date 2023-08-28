@@ -22,7 +22,7 @@
     </div>
     <div class="form-floating">
       <input
-        type="number"
+        type="text"
         class="form-control"
         id="number"
         placeholder="number"
@@ -31,7 +31,9 @@
       <label for="number">Número telefónico</label>
     </div>
   </form>
-  <button type="button" class="btn btn-success">Guardar</button>
+  <button type="button" class="btn btn-success" (click)="updateUser()">
+    Guardar
+  </button>
   <button type="button" class="btn btn-danger">Eliminar datos</button>
   <!-- <button type="button" class="btn btn-warning" (click)="openChangePassword()">
     Cambiar contraseña

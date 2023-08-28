@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   private setFormProfile(): void {
     const id = this.tokenService.token as string;
-    this.adminService.getProfile({ id }).subscribe({
+    this.subscription = this.adminService.getProfile({ id }).subscribe({
       next: (res) => {
         this.formProfile.patchValue({
           name: res.name,
@@ -55,6 +55,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
           phone: res.phone,
         });
       },
+      error: (error: HttpErrorResponse) => {
+        this.alerService.alertError(error);
+      },
+    });
+  }
+
+  updateUser(): void {
+    const body = this.formProfile.value;
+    const id = this.tokenService.token as string;
+    this.adminService.updateProfile(id, body).subscribe({
+      next: () => {},
       error: (error: HttpErrorResponse) => {
         this.alerService.alertError(error);
       },

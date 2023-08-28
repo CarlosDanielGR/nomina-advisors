@@ -16,4 +16,12 @@ export class AdminService {
   getProfile(params: { id: string }): Observable<User> {
     return this.http.get<User>(`${this.API_URL}profile`, { params });
   }
+
+  updateProfile(id: string, body: User): Observable<User> {
+    return this.http.patch<User>(`${this.API_URL}profile`, body, {
+      params: {
+        id,
+      },
+    });
+  }
 }
