@@ -1,0 +1,37 @@
+<article class="sale-simulator">
+  <h4>Simular venta</h4>
+  <form class="sale-simulator__form" [formGroup]="formSale">
+    <div class="form-floating sales__select">
+      <select
+        class="form-select"
+        id="selectAdvisor"
+        aria-label="Floating label select example"
+        formControlName="userId"
+      >
+        <option selected hidden></option>
+        <option *ngFor="let user of users$ | async" [value]="user.id">
+          {{ user.name }}
+        </option>
+      </select>
+      <label for="selectAdvisor">Seleccionar asesor</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        placeholder="12345678"
+        formControlName="price"
+      />
+      <label for="price">Precio de venta</label>
+    </div>
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="formSale.invalid"
+      (click)="sendData()"
+    >
+      Vender
+    </button>
+  </form>
+</article>
