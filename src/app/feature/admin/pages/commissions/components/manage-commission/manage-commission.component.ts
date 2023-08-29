@@ -9,6 +9,7 @@ import {
   TARGETS,
   TYPE_ADVISER,
 } from 'src/app/shared/constant/comission.constant';
+import { Target } from 'src/app/shared/interfaces/nomina.interface';
 
 @Component({
   selector: 'app-manage-commission',
@@ -17,6 +18,8 @@ import {
 })
 export class ManageCommissionComponent implements OnInit {
   @Input() targetNum: number = 0;
+
+  @Input() commissionData: (Target & { commissions?: number[] })[] = [];
 
   @Input() isEdit: boolean = false;
 
@@ -41,6 +44,7 @@ export class ManageCommissionComponent implements OnInit {
       junior: [''],
       senior: [''],
       master: [''],
+      target: [''],
     });
   }
 
@@ -51,14 +55,29 @@ export class ManageCommissionComponent implements OnInit {
     this.createCommission();
   }
 
+  setFormCommission(targetNum: number): void {
+    const indexTarget = targetNum - 1;
+
+    const getCommission = (index: number) => {
+      return this.commissionData[index].commissions as Number[];
+    };
+
+    this.formCommission.patchValue({
+      junior: getCommission(0)[indexTarget],
+      senior: getCommission(1)[indexTarget],
+      master: getCommission(2)[indexTarget],
+    });
+  }
+
   private createCommission(): void {
     const body = [] as Commission[];
     Object.keys(this.formCommission.value).forEach((key) => {
-      body.push({
-        profit: this.formCommission.value[key],
-        experience: this.typeAdviser[key as keyof typeof TYPE_ADVISER],
-        target: this.targetNum,
-      });
+      if (this.formCommission.value[key])
+        body.push({
+          profit: this.formCommission.value[key],
+          experience: this.typeAdviser[key as keyof typeof TYPE_ADVISER],
+          target: this.targetNum,
+        });
     });
     this.adminService.createComission(body).subscribe({
       next: () => {

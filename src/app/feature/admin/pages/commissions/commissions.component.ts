@@ -10,7 +10,6 @@ import {
 } from 'src/app/shared/constant/comission.constant';
 import { AdminService } from '../../services/admin.service';
 import { Target } from 'src/app/shared/interfaces/nomina.interface';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-commissions',
@@ -24,29 +23,17 @@ export class CommissionsComponent implements OnInit {
 
   typeCrup = TYPE_CRUP;
 
-  formRemove!: FormGroup;
-
   isRemove: boolean = false;
 
   targetNum: number = 0;
 
   constructor(
     private readonly modalService: NgbModal,
-    private readonly adminService: AdminService,
-    private readonly formBuilder: FormBuilder
+    private readonly adminService: AdminService
   ) {}
 
   ngOnInit(): void {
     this.getAllCommissions();
-    this.initFormRemove();
-  }
-
-  private initFormRemove(): void {
-    this.formRemove = this.formBuilder.group({
-      1: [''],
-      2: [''],
-      3: [''],
-    });
   }
 
   private getAllCommissions(): void {
@@ -72,7 +59,12 @@ export class CommissionsComponent implements OnInit {
   }
 
   removeCommissions(): void {
-    console.log(this.formRemove.value);
+    this.adminService.removeCommission().subscribe({
+      next: () => {
+        this.getAllCommissions();
+        this.isRemove = false;
+      },
+    });
   }
 
   openManageComission(type: TYPE_CRUP): void {
@@ -84,6 +76,8 @@ export class CommissionsComponent implements OnInit {
     });
     modalRef.componentInstance.isEdit = type === 1 ? true : false;
     modalRef.componentInstance.targetNum = this.targetNum;
+    modalRef.componentInstance.commissionData = this.targets;
+
     modalRef.closed.subscribe({
       next: () => {
         this.getAllCommissions();

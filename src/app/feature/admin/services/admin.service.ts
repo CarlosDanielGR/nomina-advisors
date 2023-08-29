@@ -52,4 +52,8 @@ export class AdminService {
   getAllCommissions(): Observable<Commission[]> {
     return this.http.get<Commission[]>(`${this.API_URL}commission`);
   }
+
+  removeCommission(): Observable<void> {
+    return this.http.delete<void>(`${this.API_URL}commission`);
+  }
 }

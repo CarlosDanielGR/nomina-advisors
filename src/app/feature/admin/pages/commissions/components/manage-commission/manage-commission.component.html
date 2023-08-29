@@ -1,6 +1,44 @@
 <article class="manage-commission">
   <h4>{{ isEdit ? "Editar" : "Crear" }} comisión</h4>
   <form class="manage-commission__form" [formGroup]="formCommission">
+    <div *ngIf="isEdit">
+      <div *ngIf="targetNum > 1" class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="target"
+          id="commission1"
+          formControlName="target"
+          [value]="1"
+          (change)="setFormCommission(1)"
+        />
+        <label class="form-check-label" for="commission1"> Comisión 1 </label>
+      </div>
+      <div *ngIf="targetNum > 2" class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="target"
+          id="commission2"
+          formControlName="target"
+          [value]="2"
+          (change)="setFormCommission(2)"
+        />
+        <label class="form-check-label" for="commission2"> Comisión 2 </label>
+      </div>
+      <div *ngIf="targetNum > 3" class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="target"
+          id="commission3"
+          formControlName="target"
+          [value]="3"
+          (change)="setFormCommission(3)"
+        />
+        <label class="form-check-label" for="commission3"> Comisión 3 </label>
+      </div>
+    </div>
     <div>
       <span>Junior (Valor en %)</span>
       <div class="form-floating">
