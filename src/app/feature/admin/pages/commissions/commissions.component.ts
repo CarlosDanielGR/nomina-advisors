@@ -80,7 +80,9 @@ export class CommissionsComponent implements OnInit {
 
     modalRef.closed.subscribe({
       next: () => {
-        this.getAllCommissions();
+        setTimeout(() => {
+          this.getAllCommissions();
+        }, 500);
       },
     });
   }

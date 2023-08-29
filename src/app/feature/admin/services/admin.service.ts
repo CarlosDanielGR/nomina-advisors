@@ -56,4 +56,8 @@ export class AdminService {
   removeCommission(): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}commission`);
   }
+
+  updateCommission(body: any[]): Observable<void> {
+    return this.http.patch<void>(`${this.API_URL}commission`, body);
+  }
 }

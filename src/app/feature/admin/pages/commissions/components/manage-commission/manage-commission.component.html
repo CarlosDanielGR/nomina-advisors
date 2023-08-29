@@ -81,6 +81,7 @@
     <button
       type="button"
       class="btn btn-{{ isEdit ? 'warning' : 'success' }}"
+      [disabled]="formCommission.invalid"
       (click)="sendCommission()"
     >
       {{ isEdit ? "Editar" : "Crear" }}
