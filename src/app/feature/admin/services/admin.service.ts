@@ -4,23 +4,22 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/profile.interface';
+import { Sale } from '../interfaces/sale.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
-  private readonly API_URL = `${environment.API_URL}auth/`;
-
-  private readonly API_URL_ADMIN = `${environment.API_URL}admin/`;
+  private readonly API_URL = environment.API_URL;
 
   constructor(private readonly http: HttpClient) {}
 
   getProfile(params: { id: string }): Observable<User> {
-    return this.http.get<User>(`${this.API_URL}profile`, { params });
+    return this.http.get<User>(`${this.API_URL}auth/profile`, { params });
   }
 
   updateProfile(id: string, body: User): Observable<User> {
-    return this.http.patch<User>(`${this.API_URL}profile`, body, {
+    return this.http.patch<User>(`${this.API_URL}auth/profile`, body, {
       params: {
         id,
       },
@@ -28,10 +27,20 @@ export class AdminService {
   }
 
   removeDataUser(id: string): Observable<User> {
-    return this.http.delete<User>(`${this.API_URL}profile`, { params: { id } });
+    return this.http.delete<User>(`${this.API_URL}auth/profile`, {
+      params: { id },
+    });
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API_URL}auth/users`);
   }
 
   getAllNomina(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.API_URL_ADMIN}nomina`);
+    return this.http.get<User[]>(`${this.API_URL}admin/nomina`);
+  }
+
+  createSale(body: Sale): Observable<void> {
+    return this.http.post<void>(`${this.API_URL}sales`, body);
   }
 }

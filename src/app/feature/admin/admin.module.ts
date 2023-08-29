@@ -15,6 +15,7 @@ import { ChangePasswordComponent } from './pages/profile/components/change-passw
 import { AdminService } from './services/admin.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ManageCommissionComponent } from './pages/commissions/components/manage-commission/manage-commission.component';
+import { SaleSimulatorComponent } from './pages/sales/components/sale-simulator/sale-simulator.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ManageCommissionComponent } from './pages/commissions/components/manage
     NominaComponent,
     ChangePasswordComponent,
     ManageCommissionComponent,
+    SaleSimulatorComponent,
   ],
   imports: [
     NgSimpleSidebarModule,
