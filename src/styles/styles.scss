@@ -72,6 +72,10 @@ input.ng-touched.ng-invalid.ng-touched.form-check-input {
   border: 1.5px solid red;
 }
 
+.form-check-input {
+  border-color: #000;
+}
+
 .alert {
   position: fixed;
   top: 6rem;

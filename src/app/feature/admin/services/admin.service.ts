@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/profile.interface';
 import { Sale } from '../interfaces/sale.interface';
+import { Commission } from '../interfaces/commission.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,21 @@ export class AdminService {
 
   createSale(body: Sale): Observable<void> {
     return this.http.post<void>(`${this.API_URL}sales`, body);
+  }
+
+  createComission(body: Commission[]): Observable<void> {
+    return this.http.post<void>(`${this.API_URL}commission`, body);
+  }
+
+  getAllCommissions(): Observable<Commission[]> {
+    return this.http.get<Commission[]>(`${this.API_URL}commission`);
+  }
+
+  removeCommission(): Observable<void> {
+    return this.http.delete<void>(`${this.API_URL}commission`);
+  }
+
+  updateCommission(body: any[]): Observable<void> {
+    return this.http.patch<void>(`${this.API_URL}commission`, body);
   }
 }

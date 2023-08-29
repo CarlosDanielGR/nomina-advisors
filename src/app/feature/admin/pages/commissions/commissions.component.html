@@ -3,11 +3,13 @@
     <button
       type="button"
       class="btn btn-success"
+      [disabled]="targetNum >= 4"
       (click)="openManageComission(typeCrup.create)"
     >
       Crear comisión
     </button>
     <button
+      *ngIf="targetNum >= 2"
       type="button"
       class="btn btn-warning"
       (click)="openManageComission(typeCrup.edit)"
@@ -17,27 +19,46 @@
     <button
       type="button"
       class="btn btn-danger"
-      (click)="openManageComission(typeCrup.remove)"
+      [disabled]="targetNum <= 1"
+      (click)="isRemove ? removeCommissions() : toggleRemove()"
     >
-      Eiliminar comisión
+      {{ isRemove ? "Confirmar eliminación" : "Eiliminar comisión" }}
+    </button>
+    <button
+      *ngIf="isRemove"
+      type="button"
+      class="btn btn-secondary"
+      (click)="toggleRemove()"
+    >
+      Cancelar
     </button>
   </div>
   <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Tipo de asesor</th>
-          <th scope="col">Meta</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <tr *ngFor="let target of targets">
-          <td>{{ target.type }}</td>
-          <td>
-            {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tipo de asesor</th>
+            <th scope="col">Meta</th>
+            <th *ngIf="targetNum >= 2" scope="col">Comisión 1 (Meta)</th>
+            <th *ngIf="targetNum >= 3" scope="col">Comisión 2 (Meta + 20%)</th>
+            <th *ngIf="targetNum >= 4" scope="col">
+              Comisión 3 (Meta + >=40%)
+            </th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let target of targets">
+            <td>{{ target.type | titlecase }}</td>
+            <td>
+              {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
+            </td>
+            <td *ngFor="let commission of target.commissions">
+              {{ +commission / 100 | percent }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 </article>
