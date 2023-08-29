@@ -20,6 +20,12 @@ export class CommissionsComponent implements OnInit {
   ngOnInit(): void {}
 
   openManageComission(type: TYPE_CRUP): void {
-    this.modalService.open(ManageCommissionComponent, { centered: true });
+    if (type === 3) {
+      return;
+    }
+    const modalRef = this.modalService.open(ManageCommissionComponent, {
+      centered: true,
+    });
+    modalRef.componentInstance.isEdit = type === 1 ? true : false;
   }
 }

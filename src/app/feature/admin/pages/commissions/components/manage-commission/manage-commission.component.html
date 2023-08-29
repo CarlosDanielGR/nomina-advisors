@@ -1,37 +1,56 @@
-<form>
-  <span>Seleccionar tipo de asesor</span>
-  <div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="flexRadioDefault"
-        id="flexRadioDefault1"
-      />
-      <label class="form-check-label" for="flexRadioDefault1">
-        Default radio
-      </label>
+<article class="manage-commission">
+  <h4>{{ isEdit ? "Editar" : "Crear" }} comisión</h4>
+  <form class="manage-commission__form" [formGroup]="formCommission">
+    <span>Seleccionar tipo de asesor</span>
+    <div>
+      <div *ngFor="let target of targets; let i = index">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="experience"
+            id="experience{{ i }}"
+            formControlName="experience"
+            [value]="typeAdviser[target.type]"
+          />
+          <label class="form-check-label" for="experience{{ i }}">
+            {{ target.type }}
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-  <span> + </span>
-  <span>(Valor en %)</span>
-  <div class="form-floating">
-    <input
-      type="text"
-      class="form-control"
-      id="floatingInput"
-      placeholder="name@example.com"
-    />
-    <label for="floatingInput">Condición</label>
-  </div>
-  <span>(Valor en %)</span>
-  <div class="form-floating">
-    <input
-      type="text"
-      class="form-control"
-      id="floatingInput"
-      placeholder="name@example.com"
-    />
-    <label for="floatingInput">Comisión</label>
-  </div>
-</form>
+    <div>
+      <span>Condición para cumplir meta (Valor en %)</span>
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="condition"
+        />
+        <label for="floatingInput">Condición</label>
+      </div>
+    </div>
+    <div>
+      <span>Comisión por cumplir meta (Valor en %)</span>
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="profit"
+        />
+        <label for="floatingInput">Comisión</label>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-{{ isEdit ? 'warning' : 'success' }}"
+      (click)="sendCommission()"
+    >
+      {{ isEdit ? "Editar" : "Crear" }}
+    </button>
+  </form>
+</article>
