@@ -9,8 +9,8 @@
         formControlName="userId"
       >
         <option selected hidden></option>
-        <option *ngFor="let user of users$ | async" [value]="user.id">
-          {{ user.name }}
+        <option *ngFor="let user of users" [value]="user['id']">
+          {{ user["name"] }}
         </option>
       </select>
       <label for="selectAdvisor">Seleccionar asesor</label>
