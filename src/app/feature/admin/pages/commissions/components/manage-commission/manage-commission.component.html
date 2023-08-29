@@ -1,48 +1,43 @@
 <article class="manage-commission">
   <h4>{{ isEdit ? "Editar" : "Crear" }} comisión</h4>
   <form class="manage-commission__form" [formGroup]="formCommission">
-    <span>Seleccionar tipo de asesor</span>
     <div>
-      <div *ngFor="let target of targets; let i = index">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="experience"
-            id="experience{{ i }}"
-            formControlName="experience"
-            [value]="typeAdviser[target.type]"
-          />
-          <label class="form-check-label" for="experience{{ i }}">
-            {{ target.type }}
-          </label>
-        </div>
-      </div>
-    </div>
-    <div>
-      <span>Condición para cumplir meta (Valor en %)</span>
+      <span>Junior (Valor en %)</span>
       <div class="form-floating">
         <input
           type="number"
           class="form-control"
-          id="floatingInput"
+          id="junior"
           placeholder="name@example.com"
-          formControlName="condition"
+          formControlName="junior"
         />
-        <label for="floatingInput">Condición</label>
+        <label for="junior">Junior</label>
       </div>
     </div>
     <div>
-      <span>Comisión por cumplir meta (Valor en %)</span>
+      <span>Senior (Valor en %)</span>
       <div class="form-floating">
         <input
           type="number"
           class="form-control"
-          id="floatingInput"
+          id="senior"
           placeholder="name@example.com"
-          formControlName="profit"
+          formControlName="senior"
         />
-        <label for="floatingInput">Comisión</label>
+        <label for="senior">Senior</label>
+      </div>
+    </div>
+    <div>
+      <span>Master (Valor en %)</span>
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="master"
+          placeholder="name@example.com"
+          formControlName="master"
+        />
+        <label for="master">Master</label>
       </div>
     </div>
     <button

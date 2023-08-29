@@ -45,7 +45,11 @@ export class AdminService {
     return this.http.post<void>(`${this.API_URL}sales`, body);
   }
 
-  createComission(body: Commission): Observable<void> {
+  createComission(body: Commission[]): Observable<void> {
     return this.http.post<void>(`${this.API_URL}commission`, body);
+  }
+
+  getAllCommissions(): Observable<Commission[]> {
+    return this.http.get<Commission[]>(`${this.API_URL}commission`);
   }
 }

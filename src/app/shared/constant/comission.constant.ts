@@ -2,23 +2,23 @@ import { Target } from '../interfaces/nomina.interface';
 
 export const TARGETS: Target[] = [
   {
-    type: 'Junior',
+    type: 'junior',
     price: 5000000,
   },
   {
-    type: 'Senior',
+    type: 'senior',
     price: 10000000,
   },
   {
-    type: 'Master',
+    type: 'master',
     price: 15000000,
   },
 ];
 
 export enum TYPE_ADVISER {
-  Junior = 1,
-  Senior,
-  Master,
+  junior = 1,
+  senior,
+  master,
 }
 
 export enum TYPE_CRUP {

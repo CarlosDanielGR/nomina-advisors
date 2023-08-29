@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Commission } from 'src/app/feature/admin/interfaces/commission.interface';
 
 import { AdminService } from 'src/app/feature/admin/services/admin.service';
 import {
@@ -15,6 +16,8 @@ import {
   styleUrls: ['./manage-commission.component.scss'],
 })
 export class ManageCommissionComponent implements OnInit {
+  @Input() targetNum: number = 0;
+
   @Input() isEdit: boolean = false;
 
   targets = TARGETS;
@@ -35,9 +38,9 @@ export class ManageCommissionComponent implements OnInit {
 
   private initFormCommission(): void {
     this.formCommission = this.formBuilder.group({
-      condition: [''],
-      profit: [''],
-      experience: [''],
+      junior: [''],
+      senior: [''],
+      master: [''],
     });
   }
 
@@ -49,7 +52,14 @@ export class ManageCommissionComponent implements OnInit {
   }
 
   private createCommission(): void {
-    const body = this.formCommission.value;
+    const body = [] as Commission[];
+    Object.keys(this.formCommission.value).forEach((key) => {
+      body.push({
+        profit: this.formCommission.value[key],
+        experience: this.typeAdviser[key as keyof typeof TYPE_ADVISER],
+        target: this.targetNum,
+      });
+    });
     this.adminService.createComission(body).subscribe({
       next: () => {
         this.activeModal.close();

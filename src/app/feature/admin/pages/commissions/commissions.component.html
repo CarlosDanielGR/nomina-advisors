@@ -32,7 +32,7 @@
       </thead>
       <tbody class="table-group-divider">
         <tr *ngFor="let target of targets">
-          <td>{{ target.type }}</td>
+          <td>{{ target.type | titlecase }}</td>
           <td>
             {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
           </td>
