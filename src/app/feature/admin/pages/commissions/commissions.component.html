@@ -3,41 +3,103 @@
     <button
       type="button"
       class="btn btn-success"
+      [disabled]="targetNum >= 4"
       (click)="openManageComission(typeCrup.create)"
     >
       Crear comisión
     </button>
     <button
       type="button"
-      class="btn btn-warning"
-      (click)="openManageComission(typeCrup.edit)"
+      class="btn btn-danger"
+      (click)="isRemove ? removeCommissions() : toggleRemove()"
     >
-      Editar comisión
+      {{ isRemove ? "Confirmar eliminación" : "Eiliminar comisión" }}
     </button>
     <button
+      *ngIf="isRemove"
       type="button"
-      class="btn btn-danger"
-      (click)="openManageComission(typeCrup.remove)"
+      class="btn btn-secondary"
+      (click)="toggleRemove()"
     >
-      Eiliminar comisión
+      Cancelar
     </button>
   </div>
   <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Tipo de asesor</th>
-          <th scope="col">Meta</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <tr *ngFor="let target of targets">
-          <td>{{ target.type | titlecase }}</td>
-          <td>
-            {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <form [formGroup]="formRemove">
+      <table class="table">
+        <thead>
+          <tr>
+            <th *ngIf="targetNum > 2" scope="col">Acciones</th>
+            <th scope="col">Tipo de asesor</th>
+            <th scope="col">Meta</th>
+            <th *ngIf="targetNum >= 2" scope="col">
+              <div class="form-check">
+                <input
+                  *ngIf="isRemove"
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="1"
+                  id="commission1"
+                  formControlName="1"
+                />
+                <label class="form-check-label" for="commission1">
+                  Comisión 1 (Meta)
+                </label>
+              </div>
+            </th>
+            <th *ngIf="targetNum >= 3" scope="col">
+              <div class="form-check">
+                <input
+                  *ngIf="isRemove"
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="2"
+                  id="commission2"
+                  formControlName="2"
+                />
+                <label class="form-check-label" for="commission2">
+                  Comisión 2 (Meta + 20%)
+                </label>
+              </div>
+            </th>
+            <th *ngIf="targetNum >= 4" scope="col">
+              <div class="form-check">
+                <input
+                  *ngIf="isRemove"
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="3"
+                  id="commission3"
+                  formControlName="3"
+                />
+                <label class="form-check-label" for="commission3">
+                  Comisión 3 (Meta + >=40%)
+                </label>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let target of targets">
+            <td *ngIf="targetNum > 2">
+              <button
+                type="button"
+                class="btn btn-warning"
+                (click)="openManageComission(typeCrup.edit)"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </td>
+            <td>{{ target.type | titlecase }}</td>
+            <td>
+              {{ target.price | currency : "COP" : "symbol-narrow" : "1.0" }}
+            </td>
+            <td *ngFor="let commission of target.commissions">
+              {{ +commission / 100 | percent }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 </article>

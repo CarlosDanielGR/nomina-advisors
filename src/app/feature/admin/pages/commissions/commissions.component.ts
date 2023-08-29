@@ -9,8 +9,8 @@ import {
   TYPE_CRUP,
 } from 'src/app/shared/constant/comission.constant';
 import { AdminService } from '../../services/admin.service';
-import { Commission } from '../../interfaces/commission.interface';
 import { Target } from 'src/app/shared/interfaces/nomina.interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-commissions',
@@ -24,32 +24,55 @@ export class CommissionsComponent implements OnInit {
 
   typeCrup = TYPE_CRUP;
 
+  formRemove!: FormGroup;
+
+  isRemove: boolean = false;
+
   targetNum: number = 0;
 
   constructor(
     private readonly modalService: NgbModal,
-    private readonly adminService: AdminService
+    private readonly adminService: AdminService,
+    private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.getAllCommissions();
+    this.initFormRemove();
+  }
+
+  private initFormRemove(): void {
+    this.formRemove = this.formBuilder.group({
+      1: [''],
+      2: [''],
+      3: [''],
+    });
   }
 
   private getAllCommissions(): void {
     this.adminService.getAllCommissions().subscribe({
       next: (res) => {
-        this.targetNum = res.length + 1;
-        // this.targets.forEach((target) => {
-        //   const experience = res.filter(
-        //     (commission) =>
-        //       this.typeAdviser[target.type] === commission.experience
-        //   );
-        //   target.commissions = experience.map(
-        //     (commission) => commission.profit
-        //   );
-        // });
+        this.targets.forEach((target) => {
+          const experience = res.filter(
+            (commission) =>
+              this.typeAdviser[target.type] === +commission.experience
+          );
+          target.commissions = experience.map(
+            (commission) => commission.profit
+          );
+        });
+        const { commissions } = this.targets[0];
+        this.targetNum = (commissions?.length ?? 0) + 1;
       },
     });
+  }
+
+  toggleRemove(): void {
+    this.isRemove = !this.isRemove;
+  }
+
+  removeCommissions(): void {
+    console.log(this.formRemove.value);
   }
 
   openManageComission(type: TYPE_CRUP): void {
@@ -61,5 +84,10 @@ export class CommissionsComponent implements OnInit {
     });
     modalRef.componentInstance.isEdit = type === 1 ? true : false;
     modalRef.componentInstance.targetNum = this.targetNum;
+    modalRef.closed.subscribe({
+      next: () => {
+        this.getAllCommissions();
+      },
+    });
   }
 }
