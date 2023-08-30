@@ -17,7 +17,13 @@
           <td>{{ nomina.nomina }}</td>
           <td>{{ nomina.total }}</td>
           <td>
-            <button type="button" class="btn btn-dark">Imprimir</button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              (click)="downloadNomina(nomina)"
+            >
+              Imprimir
+            </button>
           </td>
         </tr>
       </tbody>

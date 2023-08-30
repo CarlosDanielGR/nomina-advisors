@@ -6,4 +6,8 @@ export interface User extends CreateUser {
   total: number;
   id: string;
   sales: Sale[];
+  profit: number;
+  health: number;
+  occupational: number;
+  boarding: number;
 }
