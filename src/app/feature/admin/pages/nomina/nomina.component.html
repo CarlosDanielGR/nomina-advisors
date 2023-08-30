@@ -1,0 +1,32 @@
+<article class="nominas">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Asesor</th>
+          <th scope="col">Experiencia</th>
+          <th scope="col">Salario</th>
+          <th scope="col">Total</th>
+          <th scope="col">Imprimir</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let nomina of nominaData$ | async">
+          <td>{{ nomina.name }}</td>
+          <td>{{ typeAdviser[nomina.experience] }}</td>
+          <td>{{ nomina.nomina }}</td>
+          <td>{{ nomina.total }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-dark"
+              (click)="downloadNomina(nomina)"
+            >
+              Imprimir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</article>

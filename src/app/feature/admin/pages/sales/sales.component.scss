@@ -1,0 +1,11 @@
+.sales {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  > button {
+    max-width: fit-content;
+  }
+  &__select {
+    max-width: 15rem;
+  }
+}

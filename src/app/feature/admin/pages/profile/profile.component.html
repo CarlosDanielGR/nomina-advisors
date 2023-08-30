@@ -1,0 +1,43 @@
+<article class="profile">
+  <form class="profile__form" [formGroup]="formProfile">
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="name"
+        formControlName="name"
+      />
+      <label for="name">Nombre completo</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+        formControlName="email"
+      />
+      <label for="email">Correo electrónico</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="number"
+        placeholder="number"
+        formControlName="phone"
+      />
+      <label for="number">Número telefónico</label>
+    </div>
+  </form>
+  <button type="button" class="btn btn-success" (click)="updateUser()">
+    Guardar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="removeDataUser()">
+    Eliminar datos
+  </button>
+  <!-- <button type="button" class="btn btn-warning" (click)="openChangePassword()">
+    Cambiar contraseña
+  </button> -->
+</article>

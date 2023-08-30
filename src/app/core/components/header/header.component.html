@@ -1,0 +1,19 @@
+<header class="header">
+  <figure class="header__logo">
+    <img src="{{ ASSETS_LOGO }}logo.webp" alt="Logo" />
+  </figure>
+  <ng-container *ngIf="isAdmin">
+    <span class="header__route">
+      {{ routeNames[currentRoute] | uppercase }}
+    </span>
+    <button
+      type="button"
+      class="btn header__logout"
+      title="Cerrar sesión"
+      routerLink=""
+      (click)="logout()"
+    >
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+  </ng-container>
+</header>

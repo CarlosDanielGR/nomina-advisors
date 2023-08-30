@@ -1,0 +1,16 @@
+%flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login {
+  @extend %flexCol;
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  &__form {
+    @extend %flexCol;
+  }
+}

@@ -1,0 +1,10 @@
+.commissions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &__btnCrup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

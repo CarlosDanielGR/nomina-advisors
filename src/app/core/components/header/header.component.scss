@@ -1,0 +1,30 @@
+@use "src/styles/_mixins.scss" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 4px 7px #00000057;
+  z-index: 1000;
+  &__logo {
+    > img {
+      max-width: 7rem;
+    }
+  }
+  &__route {
+    font-weight: 600;
+    @include screen(custom, max, 500) {
+      display: none;
+    }
+  }
+  &__logout {
+    > i {
+      font-size: 1.4rem;
+    }
+  }
+}

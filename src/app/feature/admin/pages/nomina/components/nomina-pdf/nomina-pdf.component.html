@@ -1,0 +1,91 @@
+<article class="nomina-pdf">
+  <div id="htmlData" class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="title">
+                <img
+                  src="{{ ASSETS_LOGO }}logo.webp"
+                  style="width: 100%; max-width: 300px"
+                />
+              </td>
+
+              <td>Fecha: {{ date | date : "short" }}<br /></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="information">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td>
+                Nombre: {{ userData.name }}<br />
+                Tipo de usuario:
+                {{ typeAdviser[userData.experience] | titlecase }}<br />
+              </td>
+              <td>
+                ACME SAS<br />
+                Crr 5b # 8 - 17<br />
+                Bogotá
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="heading">
+        <td>Descripción</td>
+        <td>Precio</td>
+      </tr>
+      <tr class="item">
+        <td>Nomina</td>
+        <td>
+          {{ userData.nomina | currency : "COP" : "symbol-narrow" : "1.0" }}
+        </td>
+      </tr>
+      <tr class="item">
+        <td>Comisión</td>
+        <td>
+          {{ userData.profit | currency : "COP" : "symbol-narrow" : "1.0" }}
+        </td>
+      </tr>
+      <tr class="item last">
+        <td>Salud</td>
+        <td>
+          -
+          {{ userData.health | currency : "COP" : "symbol-narrow" : "1.0" }}
+        </td>
+      </tr>
+      <tr class="item last">
+        <td>Pensión</td>
+        <td>
+          -
+          {{ userData.boarding | currency : "COP" : "symbol-narrow" : "1.0" }}
+        </td>
+      </tr>
+      <tr class="item last">
+        <td>Riesgo laboral</td>
+        <td>
+          -
+          {{
+            userData.occupational | currency : "COP" : "symbol-narrow" : "1.0"
+          }}
+        </td>
+      </tr>
+      <tr class="total">
+        <td></td>
+        <td>
+          Total:
+          {{ userData.total | currency : "COP" : "symbol-narrow" : "1.0" }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="nomina-pdf__print">
+    <button type="button" class="btn btn-success" (click)="openPDF()">
+      Imprimir
+    </button>
+  </div>
+</article>

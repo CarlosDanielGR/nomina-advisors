@@ -1,0 +1,11 @@
+@use "src/styles/_mixins.scss" as *;
+
+.auth {
+  width: 90vw;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  @include screen(custom, min, 768) {
+    width: 450px;
+  }
+}

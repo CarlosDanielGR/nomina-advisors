@@ -1,0 +1,23 @@
+<article class="sales">
+  <button type="button" class="btn btn-primary" (click)="openSaleSimulator()">
+    Simular venta
+  </button>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Asesor</th>
+          <th scope="col">Total de venta</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let user of allSales">
+          <td>{{ user["name"] }}</td>
+          <td>{{ user["sales"] }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <span>Total valor de ventas: </span>
+    <span class="fw-bold">5.000.000 COP</span> -->
+  </div>
+</article>

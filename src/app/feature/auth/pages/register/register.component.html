@@ -1,0 +1,43 @@
+<article class="register">
+  <span class="register__title">Registro</span>
+  <form class="register__form" [formGroup]="formRegister">
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="name@example.com"
+        formControlName="name"
+      />
+      <label for="name">Nombre completo</label>
+    </div>
+    <app-common-form [formGroup]="formRegister"></app-common-form>
+    <div class="form-floating">
+      <select
+        class="form-select"
+        id="experience"
+        aria-label="Floating label select example"
+        formControlName="experience"
+      >
+        <option value="1">Junior</option>
+        <option value="2">Senior</option>
+        <option value="3">Master</option>
+      </select>
+      <label for="experience">Nivel de experiencia</label>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="formRegister.invalid"
+      (click)="sendData()"
+    >
+      Registrar
+    </button>
+  </form>
+  <div>
+    <span>¿Ya tienes cuenta? </span>
+    <button type="button" class="btn btn-info" routerLink="">
+      Iniciar sesión
+    </button>
+  </div>
+</article>
